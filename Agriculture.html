@@ -94,9 +94,6 @@
 
 
 
-To create a menu bar from the structured navigation, you can apply appropriate CSS styles. Here's the updated HTML with CSS for the menu bar:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,7 +108,6 @@ To create a menu bar from the structured navigation, you can apply appropriate C
   }
 
   nav {
-    background-color: #444;
     padding: 5px;
   }
 
@@ -119,26 +115,25 @@ To create a menu bar from the structured navigation, you can apply appropriate C
     list-style-type: none;
     padding: 0;
     margin: 0;
+    columns: 2; /* Display items in two columns */
+    column-gap: 40px; /* Add gap between columns */
   }
 
   nav ul li {
     display: inline-block;
     margin-right: 20px;
+    vertical-align: top; /* Align items to the top */
   }
 
   nav ul li a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
     display: block;
-    padding: 10px;
   }
 
   nav ul ul {
     display: none;
     position: absolute;
-    background-color: #555;
-    padding: 0;
-    margin: 0;
   }
 
   nav ul ul li {
@@ -178,31 +173,19 @@ To create a menu bar from the structured navigation, you can apply appropriate C
         </ul>
       </li>
       <li>
-        <a href="#">Main Item 2</a>
-        <ul>
-          <li>
-            <a href="#">Division 1</a>
-            <ul>
-              <li><a href="#">Subdivision 1.1</a></li>
-              <li><a href="#">Subdivision 1.2</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Division 2</a>
-            <ul>
-              <li><a href="#">Subdivision 2.1</a></li>
-              <li><a href="#">Subdivision 2.2</a></li>
-            </ul>
-          </li>
-        </ul>
+        <a href="#">Main Item 2</a> <!-- Main Item 2 with no subdivisions -->
       </li>
     </ul>
   </nav>
 
- 
+  <h1>Content Heading 1</h1>
+  <p>Content goes here...</p>
+
+  <h2>Content Subheading</h2>
+  <p>More content goes here...</p>
 </body>
 </html>
-```
+
 
 
 
