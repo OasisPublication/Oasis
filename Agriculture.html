@@ -94,7 +94,7 @@
 
 
 
-		    Sure, I've removed the padding and background colors from the menu bar in the CSS. Here's the updated code:
+To create a menu bar from the structured navigation, you can apply appropriate CSS styles. Here's the updated HTML with CSS for the menu bar:
 
 ```html
 <!DOCTYPE html>
@@ -111,6 +111,7 @@
   }
 
   nav {
+    background-color: #444;
     padding: 5px;
   }
 
@@ -126,14 +127,18 @@
   }
 
   nav ul li a {
-    color: #000;
+    color: #fff;
     text-decoration: none;
     display: block;
+    padding: 10px;
   }
 
   nav ul ul {
     display: none;
     position: absolute;
+    background-color: #555;
+    padding: 0;
+    margin: 0;
   }
 
   nav ul ul li {
@@ -194,12 +199,12 @@
     </ul>
   </nav>
 
-  <h1>Content Heading 1</h1>
-  <p>Content goes here...</p>
-
-  <h2>Content Subheading</h2>
-  <p>More content goes here...</p>
+ 
 </body>
+</html>
+```
+
+
 
  
 <!-- --- VETERINARY JOURNALS AND THEIR APC -----> 
