@@ -93,7 +93,65 @@
     </body></section>
 
 
-		    <nav>
+
+		    Sure, I've removed the padding and background colors from the menu bar in the CSS. Here's the updated code:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu Bar</title>
+<style>
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+
+  nav {
+    padding: 5px;
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  nav ul li a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+  }
+
+  nav ul ul {
+    display: none;
+    position: absolute;
+  }
+
+  nav ul ul li {
+    display: block;
+  }
+
+  nav ul li:hover > ul {
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Main Title</h1>
+    <h2>Sub-header</h2>
+  </header>
+
+  <nav>
     <ul>
       <li>
         <a href="#">Main Item 1</a>
@@ -136,7 +194,14 @@
     </ul>
   </nav>
 
+  <h1>Content Heading 1</h1>
+  <p>Content goes here...</p>
 
+  <h2>Content Subheading</h2>
+  <p>More content goes here...</p>
+</body>
+
+ 
 <!-- --- VETERINARY JOURNALS AND THEIR APC -----> 
 
 
