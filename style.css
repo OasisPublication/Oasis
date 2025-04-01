@@ -619,6 +619,35 @@ table tr:nth-child(odd) td {
     background-color:antiquewhite;
 }
 
+/*---------- https://github.com/OasisPublication/Oasis/blob/main/Submit.html -------------*/
+/* Add these to your existing CSS */
+.github-submit-btn {
+    display: inline-block;
+    background: #24292e;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    margin: 20px 0;
+    transition: all 0.3s;
+}
+
+.github-submit-btn:hover {
+    background: #0366d6;
+    transform: translateY(-2px);
+}
+
+.github-submit-btn i {
+    margin-right: 10px;
+}
+
+.upload-note {
+    color: #586069;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
 
 
 
