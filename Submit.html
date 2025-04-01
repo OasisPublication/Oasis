@@ -1,207 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-     
-    <meta name="viewport" content="with=device-width, initial-scale=1.0">
-   
-    <title>Oasis Publication</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Submission - Oasis Publication</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="form-handler.php">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/153a0abdb5.js" crossorigin="anonymous"></script>    
-
-
-    
-    <!-- Pixel Code for https://www.widgetsquad.com/ -->
-<script async src="https://www.widgetsquad.com/pixel/rdxzk8spv7ijnycesnpgh4trop69sa0q"></script>
-<!-- END Pixel Code -->
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5887204074952094"
-     crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/153a0abdb5.js" crossorigin="anonymous"></script>
 </head>
-    
-<body>
-
-
 <body>
     <section class="header">
         <nav>
-	 <a href="index.html"><img src="images/Farha-b.png"></a>
-        <div class="nav-links" id="navLinks">
-		
-    <ul>
-        <li><a href="index.html">Home</a></li>
-	<li><a href="Member Login.html">Member Login</a></li>
-	<li><a href="submission.html">Submit Here</a></li>  
-	    <li><a href="Submit.html">submit</a><li>
-	<li><a href="ContactUs.html">Contact Us</a></li>
-                </ul></div>
+            <a href="index.html"><img src="images/Farha-b.png"></a>
+            <div class="nav-links" id="navLinks">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Member Login.html">Member Login</a></li>
+                    <li><a href="submission.html">Submit Here</a></li>  
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                </ul>
+            </div>
             <i class="fa fa-bars" aria-hidden="true" onclick="showmenu()"></i>
-            </nav></section> 
+        </nav>
+    </section>
 
-	
-<body>
     <div class="container">
         <header>
             <h1>Academic Paper Submission</h1>
-            <p class="subtitle">Submit your research paper to our repository</p>
+            <p class="subtitle">Submit directly to our GitHub repository</p>
         </header>
         
-        <form id="paperForm">
-            <div class="form-group">
-                <label for="author">Author Name</label>
-                <input type="text" id="author" name="author" required placeholder="John Doe">
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required placeholder="john@university.edu">
-            </div>
-            
-            <div class="form-group">
-                <label for="title">Paper Title</label>
-                <input type="text" id="title" name="title" required placeholder="A Study of Important Phenomena">
-            </div>
-            
-            <div class="form-group">
-                <label for="paper">Upload Paper (PDF or DOCX)</label>
-                <div class="file-upload">
-                    <label class="file-upload-label" for="paper">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <span>Click to browse or drag and drop your file</span>
-                        <span class="file-name" id="fileName">No file selected</span>
-                    </label>
-                    <input type="file" id="paper" name="paper" accept=".pdf,.docx" required>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="keywords">Keywords (comma separated)</label>
-                <input type="text" id="keywords" name="keywords" placeholder="machine learning, data analysis, AI">
-            </div>
-            
-            <div class="form-group">
-                <label for="abstract">Abstract</label>
-                <textarea id="abstract" name="abstract" rows="4" required placeholder="Brief summary of your paper..."></textarea>
-            </div>
-            
-            <button type="submit" id="submitBtn">Submit Paper</button>
-            
-            <div class="progress" id="progressBar" style="display: none;">
-                <div class="progress-bar" id="progressBarFill"></div>
-            </div>
-            
-            <div class="status" id="statusMessage"></div>
-        </form>
-        
+        <!-- Updated Form -->
+        <div class="form-group">
+            <a href="https://github.com/YOUR-USERNAME/YOUR-REPO/issues/new?template=submission.yml" 
+               class="github-submit-btn">
+               <i class="fab fa-github"></i> Submit via GitHub
+            </a>
+            <p class="upload-note">You'll be able to drag-and-drop your PDF directly into the submission form</p>
+        </div>
+
         <footer>
-            <p>All submissions will be uploaded to our GitHub repository for review.</p>
+            <p>All submissions become GitHub issues in our repository.</p>
         </footer>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('paperForm');
-            const fileInput = document.getElementById('paper');
-            const fileName = document.getElementById('fileName');
-            const submitBtn = document.getElementById('submitBtn');
-            const progressBar = document.getElementById('progressBar');
-            const progressBarFill = document.getElementById('progressBarFill');
-            const statusMessage = document.getElementById('statusMessage');
-            
-            // Update file name display
-            fileInput.addEventListener('change', function() {
-                if (this.files.length > 0) {
-                    fileName.textContent = this.files[0].name;
-                } else {
-                    fileName.textContent = 'No file selected';
-                }
-            });
-            
-            // Form submission
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                // Disable submit button
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Uploading...';
-                progressBar.style.display = 'flex';
-                
-                // Get form data
-                const formData = new FormData(form);
-                const file = formData.get('paper');
-                
-                try {
-                    // Simulate upload progress (replace with actual upload progress in real implementation)
-                    simulateProgress();
-                    
-                    // In a real implementation, you would:
-                    // 1. Call your serverless function (Netlify, Vercel, etc.)
-                    // 2. Which then uses the GitHub API to upload the file
-                    // 3. Return success/error response
-                    
-                    // For demo purposes, we'll simulate a successful upload
-                    setTimeout(() => {
-                        showSuccess('Paper submitted successfully! It has been uploaded to our GitHub repository.');
-                        form.reset();
-                        fileName.textContent = 'No file selected';
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = 'Submit Paper';
-                    }, 2000);
-                    
-                    // Actual implementation would look more like:
-                    /*
-                    const response = await fetch('/.netlify/functions/upload', {
-                        method: 'POST',
-                        body: formData
-                    });
-                    
-                    const result = await response.json();
-                    
-                    if (response.ok) {
-                        showSuccess(result.message);
-                        form.reset();
-                    } else {
-                        showError(result.error || 'Submission failed');
-                    }
-                    */
-                    
-                } catch (error) {
-                    showError('An error occurred during submission. Please try again.');
-                    console.error('Submission error:', error);
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Submit Paper';
-                }
-            });
-            
-            function simulateProgress() {
-                let width = 0;
-                const interval = setInterval(() => {
-                    if (width >= 100) {
-                        clearInterval(interval);
-                    } else {
-                        width += 10;
-                        progressBarFill.style.width = width + '%';
-                    }
-                }, 200);
-            }
-            
-            function showSuccess(message) {
-                statusMessage.className = 'status success';
-                statusMessage.textContent = message;
-                progressBar.style.display = 'none';
-            }
-            
-            function showError(message) {
-                statusMessage.className = 'status error';
-                statusMessage.textContent = message;
-                progressBar.style.display = 'none';
-            }
-        });
+        // Your existing menu toggle script
+        function showmenu() {
+            const navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("show");
+        }
     </script>
 </body>
 </html>
-        
-      
