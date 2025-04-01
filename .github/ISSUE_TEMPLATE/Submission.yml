@@ -1,0 +1,47 @@
+name: Paper Submission
+description: Submit a research paper
+title: "[Submission] TITLE"
+labels: ["submission"]
+body:
+  - type: input
+    id: author
+    attributes:
+      label: Author Name
+      description: Full name and affiliation
+    validations:
+      required: true
+
+  - type: input
+    id: email
+    attributes:
+      label: Contact Email
+    validations:
+      required: true
+
+  - type: dropdown
+    id: paper-type
+    attributes:
+      label: Paper Type
+      options:
+        - "Research Paper"
+        - "Review Article"
+        - "Short Communication"
+    validations:
+      required: true
+
+  - type: textarea
+    id: abstract
+    attributes:
+      label: Abstract
+      description: 250 words maximum
+    validations:
+      required: true
+
+  - type: textarea
+    id: upload
+    attributes:
+      label: Upload Paper
+      description: Drag and drop your PDF/DOCX file here (max 10MB)
+      placeholder: "You can attach files by dragging & dropping or selecting them"
+    validations:
+      required: true
