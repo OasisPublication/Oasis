@@ -149,7 +149,983 @@
             	<li><a href="UnderConstruction.html">Agriculture</a></li>
             	<li><a href="UnderConstruction.html">Environment</a></li>
             	<li><a href="UnderConstruction.html">Health</a></li>
-            	<li><a href="UnderConstruction.html">Allied Health</a></li>
+            	<li><a hr<head>
+
+    <title>Our Journals</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+
+        :root {
+
+            --primary: #2c3e50;
+
+            --secondary: #3498db;
+
+            --light: #f5f5f5;
+
+            --dark: #333;
+
+            --gray: #7f8c8d;
+
+        }
+
+        body {
+
+            font-family: 'Fredoka', sans-serif;
+
+            margin: 0;
+
+            padding: 20px;
+
+            background-color: var(--light);
+
+        }
+
+        .table-container {
+
+            overflow-x: auto;
+
+            margin: 30px 0;
+
+            position: relative;
+
+        }
+
+        .journals-table {
+
+            width: 100%;
+
+            min-width: 600px;
+
+            border-collapse: collapse;
+
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+
+            background: white;
+
+        }
+
+        .journals-table th {
+
+            background-color: var(--primary);
+
+            color: white;
+
+            padding: 15px;
+
+            text-align: left;
+
+            font-weight: 500;
+
+            cursor: pointer;
+
+            position: relative;
+
+        }
+
+        .journals-table th:hover {
+
+            background-color: #1a252f;
+
+        }
+
+        .journals-table th.sort-asc::after {
+
+            content: " \25B2";
+
+            font-size: 12px;
+
+        }
+
+        .journals-table th.sort-desc::after {
+
+            content: " \25BC";
+
+            font-size: 12px;
+
+        }
+
+        .journals-table td {
+
+            padding: 15px;
+
+            border-bottom: 1px solid #eee;
+
+            vertical-align: middle;
+
+        }
+
+        .journal-photo {
+
+            width: 80px;
+
+            height: 80px;
+
+            object-fit: cover;
+
+            border-radius: 4px;
+
+            border: 1px solid #ddd;
+
+            cursor: pointer;
+
+            transition: transform 0.3s;
+
+        }
+
+        .journal-photo:hover {
+
+            transform: scale(1.05);
+
+        }
+
+        .journal-title a {
+
+            color: var(--secondary);
+
+            font-weight: 500;
+
+            text-decoration: none;
+
+        }
+
+        .journal-title a:hover {
+
+            text-decoration: underline;
+
+        }
+
+        .journal-category {
+
+            background-color: #e8f4fc;
+
+            color: #2980b9;
+
+            padding: 4px 8px;
+
+            border-radius: 12px;
+
+            font-size: 12px;
+
+            display: inline-block;
+
+        }
+
+        .view-btn {
+
+            background-color: var(--secondary);
+
+            color: white;
+
+            border: none;
+
+            padding: 8px 15px;
+
+            border-radius: 4px;
+
+            cursor: pointer;
+
+            transition: all 0.3s;
+
+        }
+
+        .view-btn:hover {
+
+            background-color: #2980b9;
+
+        }
+
+        .pagination {
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-top: 20px;
+
+            gap: 5px;
+
+        }
+
+        .pagination button {
+
+            padding: 8px 15px;
+
+            border: 1px solid #ddd;
+
+            background: white;
+
+            cursor: pointer;
+
+            border-radius: 4px;
+
+        }
+
+        .pagination button.active {
+
+            background: var(--secondary);
+
+            color: white;
+
+            border-color: var(--secondary);
+
+        }
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            z-index: 100;
+
+            left: 0;
+
+            top: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background-color: rgba(0,0,0,0.8);
+
+            overflow: auto;
+
+        }
+
+        .modal-content {
+
+            margin: auto;
+
+            display: block;
+
+            max-width: 90%;
+
+            max-height: 90%;
+
+            margin-top: 5vh;
+
+            animation: zoom 0.3s;
+
+        }
+
+        @keyframes zoom {
+
+            from {transform: scale(0.5);}
+
+            to {transform: scale(1);}
+
+        }
+
+        .close {
+
+            position: absolute;
+
+            top: 20px;
+
+            right: 30px;
+
+            color: white;
+
+            font-size: 35px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+        .search-container {
+
+            margin: 20px 0;
+
+            display: flex;
+
+            gap: 10px;
+
+        }
+
+        .search-container input {
+
+            padding: 10px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 4px;
+
+            flex-grow: 1;
+
+        }
+
+        .search-container button {
+
+            padding: 10px 15px;
+
+            background: var(--secondary);
+
+            color: white;
+
+            border: none;
+
+            border-radius: 4px;
+
+            cursor: pointer;
+
+        }
+
+        @media (max-width: 768px) {
+
+            .journals-table th, 
+
+            .journals-table td {
+
+                padding: 10px;
+
+            }
+
+            .journal-photo {
+
+                width: 60px;
+
+                height: 60px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="search-container">
+
+        <input type="text" id="searchInput" placeholder="Search journals...">
+
+        <button id="searchBtn"><i class="fas fa-search"></i> Search</button>
+
+    </div>
+
+
+
+    <div class="table-container">
+
+        <table class="journals-table" id="journalsTable">
+
+            <thead>
+
+                <tr>
+
+                    <th width="15%" data-sort="photo">Cover</th>
+
+                    <th width="35%" data-sort="title">Journal</th>
+
+                    <th width="20%" data-sort="category">Category</th>
+
+                    <th width="15%" data-sort="issn">ISSN</th>
+
+                    <th width="15%">Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="tableBody">
+
+                <!-- Journal data will be loaded here by JavaScript -->
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+    <div class="pagination" id="pagination">
+
+        <!-- Pagination buttons will be added here by JavaScript -->
+
+    </div>
+
+
+
+    <!-- Modal for image preview -->
+
+    <div id="imageModal" class="modal">
+
+        <span class="close">&times;</span>
+
+        <img class="modal-content" id="modalImage">
+
+    </div>
+
+
+
+    <script>
+
+        // Journal data
+
+        const journals = [
+
+            {
+
+                photo: "images/Vaas.jpg",
+
+                title: "Veterinary and Animal Sciences",
+
+                link: "Vaas.html",
+
+                category: "Veterinary and Animal Sciences",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/Omniscience.jpg",
+
+                title: "Omniscience",
+
+                link: "Omniscience.html",
+
+                category: "All fields of knowledge and creativity",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/journal3.jpg",
+
+                title: "Animal",
+
+                link: "animal.html",
+
+                category: "Science",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/journal4.jpg",
+
+                title: "Agriculture",
+
+                link: "agriculture.html",
+
+                category: "Agriculture",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/journal5.jpg",
+
+                title: "Environment",
+
+                link: "environment.html",
+
+                category: "Ecology",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/journal6.jpg",
+
+                title: "Health",
+
+                link: "health.html",
+
+                category: "Medicine",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/Allied Health.jpg",
+
+                title: "Allied Health",
+
+                link: "Allied Health.html",
+
+                category: "Medicine",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/Language.jpg",
+
+                title: "Language",
+
+                link: "Language.html",
+
+                category: "Language",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/Literature.jpg",
+
+                title: "Literature",
+
+                link: "Literature.html",
+
+                category: "Language",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/Physics.jpg",
+
+                title: "Physics",
+
+                link: "Physics.html",
+
+                category: "Science",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/Chemistry.jpg",
+
+                title: "Chemistry",
+
+                link: "Chemistry.html",
+
+                category: "Science",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/Biology.jpg",
+
+                title: "Biology",
+
+                link: "Biology.html",
+
+                category: "Science",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/Management Science.jpg",
+
+                title: "Management Science",
+
+                link: "Mathematics.html",
+
+                category: "Science",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/Social Science.jpg",
+
+                title: "Social Science",
+
+                link: "Social Science.html",
+
+                category: "Social Science",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/Mathematics.jpg",
+
+                title: "Mathematics",
+
+                link: "Mathematics.html",
+
+                category: "Science",
+
+                APC (USD): "2"
+
+            },
+
+            {
+
+                photo: "images/Food Science.jpg",
+
+                title: "Food Science",
+
+                link: "Food Science.html",
+
+                category: "Science",
+
+                APC (USD): "2"
+
+            },
+
+        ];
+
+
+
+        // DOM elements
+
+        const tableBody = document.getElementById('tableBody');
+
+        const pagination = document.getElementById('pagination');
+
+        const searchInput = document.getElementById('searchInput');
+
+        const searchBtn = document.getElementById('searchBtn');
+
+        const modal = document.getElementById('imageModal');
+
+        const modalImg = document.getElementById('modalImage');
+
+        const closeBtn = document.querySelector('.close');
+
+
+
+        // Configuration
+
+        const rowsPerPage = 50;
+
+        let currentPage = 1;
+
+        let filteredJournals = [...journals];
+
+        let sortColumn = null;
+
+        let sortDirection = 'asc';
+
+
+
+        // Initialize table
+
+        function renderTable() {
+
+            // Calculate pagination
+
+            const start = (currentPage - 1) * rowsPerPage;
+
+            const end = start + rowsPerPage;
+
+            const paginatedData = filteredJournals.slice(start, end);
+
+
+
+            // Clear table
+
+            tableBody.innerHTML = '';
+
+
+
+            // Add rows
+
+            paginatedData.forEach(journal => {
+
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+
+                    <td><img src="${journal.photo}" alt="${journal.title}" class="journal-photo" onclick="openModal('${journal.photo}')"></td>
+
+                    <td class="journal-title"><a href="${journal.link}">${journal.title}</a></td>
+
+                    <td><span class="journal-category">${journal.category}</span></td>
+
+                    <td>${journal.issn}</td>
+
+                    <td><button class="view-btn" onclick="window.location.href='${journal.link}'">View</button></td>
+
+                `;
+
+                tableBody.appendChild(row);
+
+            });
+
+
+
+            // Render pagination
+
+            renderPagination();
+
+        }
+
+
+
+        // Render pagination buttons
+
+        function renderPagination() {
+
+            const pageCount = Math.ceil(filteredJournals.length / rowsPerPage);
+
+            pagination.innerHTML = '';
+
+
+
+            if (pageCount <= 1) return;
+
+
+
+            // Previous button
+
+            const prevBtn = document.createElement('button');
+
+            prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+
+            prevBtn.disabled = currentPage === 1;
+
+            prevBtn.addEventListener('click', () => {
+
+                if (currentPage > 1) {
+
+                    currentPage--;
+
+                    renderTable();
+
+                }
+
+            });
+
+            pagination.appendChild(prevBtn);
+
+
+
+            // Page buttons
+
+            for (let i = 1; i <= pageCount; i++) {
+
+                const pageBtn = document.createElement('button');
+
+                pageBtn.textContent = i;
+
+                pageBtn.className = currentPage === i ? 'active' : '';
+
+                pageBtn.addEventListener('click', () => {
+
+                    currentPage = i;
+
+                    renderTable();
+
+                });
+
+                pagination.appendChild(pageBtn);
+
+            }
+
+
+
+            // Next button
+
+            const nextBtn = document.createElement('button');
+
+            nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+
+            nextBtn.disabled = currentPage === pageCount;
+
+            nextBtn.addEventListener('click', () => {
+
+                if (currentPage < pageCount) {
+
+                    currentPage++;
+
+                    renderTable();
+
+                }
+
+            });
+
+            pagination.appendChild(nextBtn);
+
+        }
+
+
+
+        // Sort table
+
+        function sortTable(column) {
+
+            if (sortColumn === column) {
+
+                sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+
+            } else {
+
+                sortColumn = column;
+
+                sortDirection = 'asc';
+
+            }
+
+
+
+            // Clear previous sort indicators
+
+            document.querySelectorAll('[data-sort]').forEach(th => {
+
+                th.classList.remove('sort-asc', 'sort-desc');
+
+            });
+
+
+
+            // Add sort indicator to current column
+
+            const currentTh = document.querySelector(`[data-sort="${column}"]`);
+
+            currentTh.classList.add(`sort-${sortDirection}`);
+
+
+
+            // Sort data
+
+            filteredJournals.sort((a, b) => {
+
+                const valA = a[column] || '';
+
+                const valB = b[column] || '';
+
+                
+
+                if (valA < valB) return sortDirection === 'asc' ? -1 : 1;
+
+                if (valA > valB) return sortDirection === 'asc' ? 1 : -1;
+
+                return 0;
+
+            });
+
+
+
+            currentPage = 1;
+
+            renderTable();
+
+        }
+
+
+
+        // Search function
+
+        function searchJournals() {
+
+            const searchTerm = searchInput.value.toLowerCase();
+
+            filteredJournals = journals.filter(journal => 
+
+                journal.title.toLowerCase().includes(searchTerm) ||
+
+                journal.category.toLowerCase().includes(searchTerm) ||
+
+                journal.issn.toLowerCase().includes(searchTerm)
+
+            );
+
+            currentPage = 1;
+
+            renderTable();
+
+        }
+
+
+
+        // Modal functions
+
+        window.openModal = function(src) {
+
+            modal.style.display = "block";
+
+            modalImg.src = src;
+
+        }
+
+
+
+        closeBtn.onclick = function() {
+
+            modal.style.display = "none";
+
+        }
+
+
+
+        window.onclick = function(event) {
+
+            if (event.target == modal) {
+
+                modal.style.display = "none";
+
+            }
+
+        }
+
+
+
+        // Event listeners
+
+        document.querySelectorAll('[data-sort]').forEach(th => {
+
+            th.addEventListener('click', () => sortTable(th.dataset.sort));
+
+        });
+
+
+
+        searchBtn.addEventListener('click', searchJournals);
+
+        searchInput.addEventListener('keyup', (e) => {
+
+            if (e.key === 'Enter') searchJournals();
+
+        });
+
+
+
+        // Initial render
+
+        renderTable();
+
+    </script>
+
+</body>
+
+
+
+ef="UnderConstruction.html">Allied Health</a></li>
            	<li><a href="UnderConstruction.html">Language</a></li>
            	<li><a href="UnderConstruction.html">Literature</a></li>
 		<li><a href="UnderConstruction.html">Physics</a></li>
@@ -161,80 +1137,7 @@
 		<li><a href="UnderConstruction.html">Food Science</a></li>
 
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Photo Information Table</title>
-    <style>
-        body {
-            font-family: 'Fredoka', sans-serif;
-            margin: 20px;
-        }
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .info-table th {
-            background-color: #2c3e50;
-            color: white;
-            padding: 12px;
-            text-align: left;
-        }
-        .info-table td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-            vertical-align: middle;
-        }
-        .info-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .info-table tr:hover {
-            background-color: #f1f1f1;
-        }
-        .photo-cell {
-            width: 150px;
-        }
-        .photo-cell img {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            object-fit: cover;
-        }
-    </style>
-</head>
-<body>
-    <table class="info-table">
-        <thead>
-            <tr>
-                <th>Photo</th>
-                <th>Description</th>
-                <th>Category</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Row 1 -->
-            <tr>
-                <td class="photo-cell">
-                    < img src="images/photo1.jpg" alt="Sample Photo 1">
-                </td>
-                <td>Veterinary Science Research</td>
-                <td>Science</td>
-                <td>2023-10-15</td>
-                <td>
-                    <button>View</button>
-                    <button>Download</button>
-                </td>
-            </tr>
-            
-            <!-- Row 2 -->
-            <tr>
-                <td class="photo-cell">
-                    < img src="images/photo2.jpg" alt="Sample Photo 2">
-                <
+
 
 		
 
